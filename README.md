@@ -1,6 +1,6 @@
 # Wedding gift payment logger (Python on Vercel)
 
-Telegram channel -> Vercel function (api/webhook.py) -> Google Sheet "Payments Log" tab.
+Telegram channel -> Vercel function (app.py, Flask) -> Google Sheet "Payments Log" tab.
 
 Environment variables (Vercel > Project > Settings > Environment Variables):
 - SECRET            any letters/numbers/_/- (max 256); must equal secret_token used in setWebhook
@@ -15,3 +15,11 @@ https://api.telegram.org/botBOT_TOKEN/setWebhook?url=https://YOUR-APP.vercel.app
 
 Health check: open https://YOUR-APP.vercel.app/api/webhook -> "alive"
 Logs: Vercel > Project > Logs
+
+## Run locally first
+    python -m venv venv && source venv/bin/activate      (Windows: venv\Scripts\activate)
+    pip install -r requirements.txt
+    cp .env.example .env     (Windows: copy .env.example .env)  -> fill in BOT_TOKEN, SHEET_ID, put service_account.json in this folder
+    python run_local.py --samples --dry-run    # parsing test
+    python run_local.py --samples              # Google Sheet test
+    python run_local.py                        # real Telegram channel

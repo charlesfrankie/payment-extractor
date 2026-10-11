@@ -1,1 +1,4 @@
+flask
 gspread>=6.0.0
+requests
+tzdata
