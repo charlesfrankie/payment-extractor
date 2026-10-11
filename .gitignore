@@ -1,0 +1,5 @@
+.env
+
+__pycache__/
+.vercel/
+service_account*.json
